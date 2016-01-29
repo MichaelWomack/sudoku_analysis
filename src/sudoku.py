@@ -4,8 +4,8 @@ class Sudoku:
     'Create an instance of Sudoku to solve'
 
     def __init__(self, file, solution):
-        self.all_boxes = open('../' + file, 'r').read()
-        self.solution = [list(x) for x in open('../' + solution, 'r').read().split()]
+        self.all_boxes = open('../puzzles/' + file, 'r').read()
+        self.solution = [list(x) for x in open('../puzzles/' + solution, 'r').read().split()]
         self.rows = [list(row) for row in self.all_boxes.split()]
         self.cols, self.nonets = [], []
         self.game_complete = False
