@@ -1,29 +1,4 @@
-# Thought process:
-# Check whether position's row, col, and nonet already contain digit
-# How should I structure my sudoku grid into code. Lists within lists? Multiple Arrays?
-# With arrays in python, it is easy to determine if an item is in the list
-# I need to be able to easily access the row, col, and each of 9 boxes
-# Started out creating 2d arrays for rows, cols, nonets.
-# Step one: Implement unique placement in row and column
 
-# First Run with Row, Col, Nonet Rule in place: 42 wrong out of 81, not all zeros taken care of
-# Adding loop that runs through Rows and does check: 39 wrong out of 81, 22 empty
-# Adding loop that runs through cols and does check: 38 wrong out of 81, 21 empty
-# Best with large loop, no lockup: 36 wrong, 16 empty
-# I started solving sudoku in real life. Realized I need to start with nonet or col or row with least blanks
-
-# Started with checking if the number is in the nonet.
-# Note. With row, col, nonet, and is_valid_placement: 36 wrong, 11 empty
-# Note. With row, col, nonet, is_valid_placement and only_valid_placement: 52 wrong, 52 empty
-
-#Puzzle 237 : with col,row, nonet, only_valid_placement: 26 wrong, 26 empty. Definitely check
-    # Stops, doesn't know that a column only has one position left,
-
-    # Added column loop in init(): 24 wrong, 24 empty?????
-    # Column loop bug: 20 wrong, 19 empty
-    # Fixed column bug: 22 wrong, 22 empty
-    # Tried row loop: 0,0 ********************************************************
-#
 import time
 class Sudoku:
     'Create an instance of Sudoku to solve'
@@ -224,12 +199,11 @@ class Sudoku:
                 self.check_nonets(number)
                 self.check_cols(number)
                 self.check_rows(number)
-            # time.sleep(.1)
+
             print("\nMy Answer: ")
             self.print_rows()
             print("\nNumber wrong: {}\nNumber empty: {}\n".format(
                     self.get_number_wrong(), self.get_number_empty()))
-            # time.sleep(.5)
 
             if self.is_complete() or (time.process_time() > 2):
                 self.game_complete = True
@@ -241,6 +215,3 @@ class Sudoku:
         self.print_solution()
         print("\nNumber wrong: {}\nNumber empty: {}\n".format(
                 self.get_number_wrong(), self.get_number_empty()))
-
-s = Sudoku('easy240.txt', 'solution240.txt')
-s.init_game()
