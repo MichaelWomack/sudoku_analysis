@@ -4,5 +4,5 @@ from sudoku import Sudoku
 # param1: puzzle fileName, param2: solution fileName
 
 if __name__ == "__main__":
-    sudoku = Sudoku('easy239.txt', 'solution239.txt')
+    sudoku = Sudoku('easy235.txt', 'solution235.txt')
     sudoku.init_game()

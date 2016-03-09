@@ -188,7 +188,7 @@ class Sudoku:
         self.cols[col_index][row_index] = number
         self.nonets[nonet_index][box_index] = number
 
-    # Initialize game
+    # Initialize puzzle
     def init_game(self):
         # fill game structures
         self.get_cols()
